@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SOLV Energy Training</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>SOLV Energy Training Portal</h1>
+
+    <p>Welcome to SOLV Energy training portal! This page provides an overview of how solar energy works at SOLV, useful tools for employees, and a basic understanding of power systems</p>
+    <p>If you're name is Ryan Shah you must be here frequently</p>
+    <div class="tabs">
+        <button class="tab" onclick="showTab('solar')">How Solar Works at SOLV</button>
+        <button class="tab" onclick="showTab('tools')">SOLV Tools</button>
+        <button class="tab" onclick="showTab('power')">Power Systems 101</button>
+        <button class="tab" onclick="showTab('quiz')">Power Systems Quiz!</button>
+    </div>
+
+   
+    <div class="tab-content" id="solar">
+        <h2>How Solar Works at SOLV</h2>
+        <ul>
+            <li>
+                Sunlight hits PV modules, producing DC electricity<br>
+                <img src="sunlight-hits.jpeg" alt="Solar panel capturing sunlight" width="400">
+            </li>
+            <li>
+                Mounted on racking systems fixed to ground posts<br>
+                <img src="racking system.jpeg" alt="Racking system for solar panels" width="400">
+            </li>
+            <li>Multiple modules form rows, often miles long<br>
+                <img src="solar-plant.jpeg" alt="Long rows of solar panels" width="400">
+            </li>
+            <li>Trackers adjust panel angle to follow the sun<br>
+                <img src="tracker.jpeg" alt="Solar tracker adjusting panel angle" width="400">
+            </li>
+            <li>
+                Wire harnesses send DC power to the inverter skid<br>
+                <img src="DC_Collector.jpeg" alt="DC collector wiring" width="400">
+            </li>
+            <li>Inverters convert DC to AC electricity<br>
+                <img src="inverter.jpeg" alt="Inverter converting DC to AC" width="400">
+            </li>
+
+            <li>AC travels to substations for voltage change</li>
+            <li>Electricity is delivered to communities</li>
+        </ul>
+        <h3>SCADA System</h3>
+        <ul>
+            <li>Monitors & controls DC to AC conversion in real time</li>
+            <li>Tracks alarms, production, and remote commands</li>
+        </ul>
+        <h3>Grid Connection</h3>
+        <ul>
+            <li>Power sent to utility grid and tracked for revenue</li>
+        </ul>
+    </div>
+
+  
+    <div class="tab-content" id="tools" style="display:none;">
+        <h2>Useful Tools</h2>
+        <ul>
+            <li><strong>RAE</strong>: Performance monitoring & company AI</li>
+            <li><strong>The Grid</strong>: Document/knowledge sharing (SharePoint)</li>
+            <li><strong>Workday</strong>: HR tasks (pay, timecards, trainings)</li>
+            <li><strong>Sunscreen</strong>: Maintenance ticketing system</li>
+        </ul>
+    </div>
+
+    <div class="tab-content" id="power" style="display:none;">
+        <h2>Power Systems 101</h2>
+        <ul>
+            <li><strong>Voltage (V)</strong>: Electrical “pressure” pushing current through a wire</li>
+            <li><strong>Current (I)</strong>: The flow of electricity (electrons) through a conductor</li>
+            <li><strong>Resistance (R)</strong>: Opposition to current flow in a circuit</li>
+            <li><strong>Power (P)</strong>: The rate of doing electrical work (P = V × I)</li>
+            <li><strong>Energy</strong>: Total electricity used over time</li>
+            <li><strong>Direct Current (DC)</strong>: One-directional electricity (from solar panels)</li>
+            <li><strong>Alternating Current (AC)</strong>: Grid electricity that reverses direction in cycles</li>
+            <li><strong>Inverter</strong>: Converts DC to AC</li>
+            <li><strong>Transformer</strong>: Changes voltage levels for transmission</li>
+        </ul>
+    </div> 
+
+    <div class="tab-content" id="quiz" style="display: none;">
+    <h2>🔌 Power Systems 101: Quiz</h2>
+    <p>Each question has one correct answer. Answers are shown after submission.</p>
+    <form id="quizForm">
+
+      <div id="q1_container">
+        <p>1. What is voltage (V)? <span id="q1_feedback" class="feedback"></span></p>
+        <input type="radio" name="q1" value="A"> A. The rate of doing electrical work<br>
+        <input type="radio" name="q1" value="B"> B. The flow of electricity through a conductor<br>
+        <input type="radio" name="q1" value="C"> C. The opposition to current in a circuit<br>
+        <input type="radio" name="q1" value="D"> D. The electrical “pressure” pushing current through a wire
+      </div><br>
+
+      <div id="q2_container">
+        <p>2. What is current (I)? <span id="q2_feedback" class="feedback"></span></p>
+        <input type="radio" name="q2" value="A"> A. The total electricity used over time<br>
+        <input type="radio" name="q2" value="B"> B. The flow of electricity through a conductor<br>
+        <input type="radio" name="q2" value="C"> C. The conversion of DC to AC<br>
+        <input type="radio" name="q2" value="D"> D. The change in voltage for transmission
+      </div><br>
+
+      <div id="q3_container">
+        <p>3. What is resistance (R)? <span id="q3_feedback" class="feedback"></span></p>
+        <input type="radio" name="q3" value="A"> A. The conversion of AC to DC<br>
+        <input type="radio" name="q3" value="B"> B. The pressure that moves current<br>
+        <input type="radio" name="q3" value="C"> C. The opposition to current flow in a circuit<br>
+        <input type="radio" name="q3" value="D"> D. The total power used
+      </div><br>
+
+      <div id="q4_container">
+        <p>4. What is power (P)? <span id="q4_feedback" class="feedback"></span></p>
+        <input type="radio" name="q4" value="A"> A. The total electricity used over time<br>
+        <input type="radio" name="q4" value="B"> B. The opposition to flow in a circuit<br>
+        <input type="radio" name="q4" value="C"> C. The flow of electrons through a wire<br>
+        <input type="radio" name="q4" value="D"> D. The rate of doing electrical work
+      </div><br>
+
+      <div id="q5_container">
+        <p>5. What is energy (in electrical terms)? <span id="q5_feedback" class="feedback"></span></p>
+        <input type="radio" name="q5" value="A"> A. The rate at which electricity flows<br>
+        <input type="radio" name="q5" value="B"> B. The total amount of electricity used over time<br>
+        <input type="radio" name="q5" value="C"> C. The pressure that drives current<br>
+        <input type="radio" name="q5" value="D"> D. The resistance in the circuit
+      </div><br>
+
+      <div id="q6_container">
+        <p>6. What is direct current (DC)? <span id="q6_feedback" class="feedback"></span></p>
+        <input type="radio" name="q6" value="A"> A. Electricity that reverses direction periodically<br>
+        <input type="radio" name="q6" value="B"> B. The conversion of AC to DC<br>
+        <input type="radio" name="q6" value="C"> C. Electricity that flows in one direction<br>
+        <input type="radio" name="q6" value="D"> D. A device that changes voltage
+      </div><br>
+
+      <div id="q7_container">
+        <p>7. What is alternating current (AC)? <span id="q7_feedback" class="feedback"></span></p>
+        <input type="radio" name="q7" value="A"> A. Electricity that flows in one direction<br>
+        <input type="radio" name="q7" value="B"> B. The total current used over time<br>
+        <input type="radio" name="q7" value="C"> C. Electricity that reverses direction in cycles<br>
+        <input type="radio" name="q7" value="D"> D. A voltage conversion process
+      </div><br>
+
+      <div id="q8_container">
+        <p>8. What does an inverter do? <span id="q8_feedback" class="feedback"></span></p>
+        <input type="radio" name="q8" value="A"> A. Stores electrical energy<br>
+        <input type="radio" name="q8" value="B"> B. Changes voltage levels<br>
+        <input type="radio" name="q8" value="C"> C. Converts DC to AC<br>
+        <input type="radio" name="q8" value="D"> D. Measures electrical resistance
+      </div><br>
+
+      <div id="q9_container">
+        <p>9. What does a transformer do? <span id="q9_feedback" class="feedback"></span></p>
+        <input type="radio" name="q9" value="A"> A. Converts DC to AC<br>
+        <input type="radio" name="q9" value="B"> B. Changes voltage levels for efficient transmission<br>
+        <input type="radio" name="q9" value="C"> C. Stores energy for later use<br>
+        <input type="radio" name="q9" value="D"> D. Controls current flow in a conductor
+      </div><br>
+
+      <button type="button" onclick="submitQuiz()">Submit</button>
+      <p id="quizResult"></p>
+    </form>
+  </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
