@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How BESS Works — Quiz</title>
+  <style>
+    :root{
+      --bg:#0b1020; --card:#11162a; --ink:#e9eefc; --ink-dim:#b9c0d9;
+      --pri:#6aa5ff; --pri-2:#93c5fd; --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial}
+    header,main{max-width:1000px;margin:24px auto;padding:0 16px}
+    h1{margin:0 0 10px;font-size:clamp(24px,3.6vw,40px);
+      background:linear-gradient(90deg,var(--pri-2),#e0e7ff 60%,#c7d2fe);
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    .card{background:linear-gradient(180deg,#0f1530,#0c1228);
+      border:1px solid #1b2450;border-radius:var(--radius);
+      box-shadow:0 12px 30px rgba(0,0,0,.35);padding:18px}
+    .muted{color:var(--ink-dim)}
+    .grid{display:grid;gap:14px}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    fieldset{border:1px solid #273160;padding:14px;border-radius:12px;background:#0b1331}
+    legend{padding:0 8px;color:#c7d2fe;font-weight:700}
+    .q-head{display:flex;gap:8px;align-items:center}
+    .badge{width:28px;height:28px;border-radius:50%;display:inline-grid;place-items:center;
+      background:#1a254d;border:1px solid #2a3768;color:#cfe3ff;font-weight:700}
+    .choices{margin-top:10px;display:grid;gap:6px}
+    label.choice{display:flex;gap:10px;padding:8px 10px;border:1px solid #223064;border-radius:10px;
+      background:#0d1636;cursor:pointer}
+    input[type="radio"], input[type="checkbox"]{accent-color:var(--pri)}
+    .feedback{margin-left:auto;font-weight:700;padding:2px 8px;border-radius:999px;
+      min-width:80px;text-align:center;color:#9aa6d1;border:1px solid transparent}
+    .feedback.ok{color:#0f5132;background:#0f1f1a;border-color:#1b6b46}
+    .feedback.bad{color:#842029;background:#240f14;border-color:#6f1527}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .controls button{appearance:none;border:1px solid #2a3768;background:#0b1331;
+      color:var(--ink);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700}
+    .controls .primary{background:#0c1a46;border-color:#29408f}
+    .score{font-weight:800;margin-left:auto;padding:10px 14px;border-radius:12px;
+      background:#0e1737;border:1px solid #2a3768;color:#d7e5ff}
+    a.back{color:#cfe3ff;text-decoration:none}
+    a.back:hover{text-decoration:underline}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>How BESS Works — Quiz</h1>
+    <p><a class="back" href="./" rel="noopener">← Back to portal</a></p>
+  </header>
+
+  <main>
+    <div class="card">
+      <p class="muted">Batteries store DC energy; a bidirectional inverter & EMS manage charge/discharge; AC feeders deliver through the substation to the grid.</p>
+
+      <form data-quiz="bess" class="grid">
+        <!-- Q1 -->
+        <fieldset class="question" data-type="single" data-answer="c">
+          <legend>
+            <span class="q-head">
+              <span class="badge">1</span>
+              When does the site typically charge the BESS?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q1" value="a"> During grid outages only</label>
+            <label class="choice"><input type="radio" name="q1" value="b"> Only at night</label>
+            <label class="choice"><input type="radio" name="q1" value="c"> When solar production exceeds demand</label>
+            <label class="choice"><input type="radio" name="q1" value="d"> Only when transmission lines are idle</label>
+          </div>
+        </fieldset>
+
+        <!-- Q2 -->
+        <fieldset class="question" data-type="single" data-answer="d">
+          <legend>
+            <span class="q-head">
+              <span class="badge">2</span>
+              What is the function of the bidirectional inverter in BESS?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q2" value="a"> Steps voltage up to transmission levels</label>
+            <label class="choice"><input type="radio" name="q2" value="b"> Measures irradiance and wind</label>
+            <label class="choice"><input type="radio" name="q2" value="c"> Combines DC strings from the PV array</label>
+            <label class="choice"><input type="radio" name="q2" value="d"> Converts DC↔AC for charging and discharging</label>
+          </div>
+        </fieldset>
+
+        <!-- Q3 -->
+        <fieldset class="question" data-type="single" data-answer="a">
+          <legend>
+            <span class="q-head">
+              <span class="badge">3</span>
+              The EMS (Energy Management System) primarily:
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q3" value="a"> Decides when to charge/discharge based on needs & pricing</label>
+            <label class="choice"><input type="radio" name="q3" value="b"> Measures transformer oil temperature</label>
+            <label class="choice"><input type="radio" name="q3" value="c"> Controls tracker tilt directly</label>
+            <label class="choice"><input type="radio" name="q3" value="d"> Replaces SCADA for all monitoring</label>
+          </div>
+        </fieldset>
+
+        <!-- Q4 (multi) -->
+        <fieldset class="question" data-type="multi" data-answer="b,c">
+          <legend>
+            <span class="q-head">
+              <span class="badge">4</span>
+              Select the valid benefits of BESS in the SOLV context.
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="q4" value="a"> Increases DC string voltage beyond nameplate</label>
+            <label class="choice"><input type="checkbox" name="q4" value="b"> Peak shaving</label>
+            <label class="choice"><input type="checkbox" name="q4" value="c"> Grid stability</label>
+            <label class="choice"><input type="checkbox" name="q4" value="d"> Eliminates need for a substation transformer</label>
+          </div>
+        </fieldset>
+
+        <!-- Q5 -->
+        <fieldset class="question" data-type="single" data-answer="c">
+          <legend>
+            <span class="q-head">
+              <span class="badge">5</span>
+              Stored battery energy reaches the grid via:
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q5" value="a"> MET station tower cabling</label>
+            <label class="choice"><input type="radio" name="q5" value="b"> Direct DC tie to transmission lines</label>
+            <label class="choice"><input type="radio" name="q5" value="c"> AC feeders → substation transformer → transmission</label>
+            <label class="choice"><input type="radio" name="q5" value="d"> Private wireless link</label>
+          </div>
+        </fieldset>
+
+        <!-- Q6 (true/false) -->
+        <fieldset class="question" data-type="tf" data-answer="true">
+          <legend>
+            <span class="q-head">
+              <span class="badge">6</span>
+              True or False: Batteries store energy as DC in cells grouped into modules and racks.
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q6" value="true"> True</label>
+            <label class="choice"><input type="radio" name="q6" value="false"> False</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="controls">
+        <button class="primary" data-action="grade" data-target="bess">Grade</button>
+        <button data-action="reset" data-target="bess">Reset</button>
+        <button data-action="reveal" data-target="bess">Show answers</button>
+        <div class="score" id="score-bess" aria-live="polite">Score: —</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="quiz.js" defer></script>
+</body>
+</html>
+

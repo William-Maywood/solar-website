@@ -1,93 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SOLV Energy Training</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>SOLV Energy Training</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Add this tiny CSS so the four values stay on one row -->
+  <style>
+    .values-grid {
+      display: flex;
+      flex-wrap: nowrap;          /* keep all four on one line (desktop) */
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .values-grid > li {
+      flex: 1 1 0;                /* equal widths */
+      min-width: 0;               /* prevent overflow */
+      padding: 16px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fff;
+    }
+    /* Responsive: allow wrapping on small screens */
+    @media (max-width: 900px) {
+      .values-grid { flex-wrap: wrap; }
+      .values-grid > li { flex: 1 1 calc(50% - 16px); }
+    }
+    @media (max-width: 520px) {
+      .values-grid > li { flex: 1 1 100%; }
+    }
+  </style>
 </head>
 <body>
-    <h1>SOLV Energy Training Portal</h1>
+  <h1>SOLV Energy Training Portal</h1>
 
-    <p>Welcome to SOLV Energy training portal! This page provides an overview of how solar energy works at SOLV, useful tools for employees, and a basic understanding of power systems</p>
-    <p>If you're name is Ryan Shah you must be here frequently</p>
-    <div class="tabs">
-        <button class="tab" onclick="showTab('solar')">How Solar Works at SOLV</button>
-        <button class="tab" onclick="showTab('tools')">SOLV Tools</button>
-        <button class="tab" onclick="showTab('power')">Power Systems 101</button>
-        <button class="tab" onclick="showTab('quiz')">Power Systems Quiz!</button>
+  <!-- Marquee-style, centered tabs -->
+  <div class="tabs-viewport">
+    <div class="tabs-track" id="tabsTrack">
+      <button class="tab active" data-tab="home"  onclick="showTab('home')">Welcome & Values</button>
+      <button class="tab"         data-tab="solar" onclick="showTab('solar')">How Solar Works at SOLV</button>
+      <button class="tab"         data-tab="tools" onclick="showTab('tools')">SOLV Tools</button>
+      <button class="tab"         data-tab="power" onclick="showTab('power')">Power Systems 101</button>
+      <button class="tab"         data-tab="quiz"  onclick="showTab('quiz')">Power Systems Quiz!</button>
     </div>
+  </div>
 
-   
-    <div class="tab-content" id="solar">
-        <h2>How Solar Works at SOLV</h2>
-        <ul>
-            <li>
-                Sunlight hits PV modules, producing DC electricity<br>
-                <img src="sunlight-hits.jpeg" alt="Solar panel capturing sunlight" width="400">
-            </li>
-            <li>
-                Mounted on racking systems fixed to ground posts<br>
-                <img src="racking system.jpeg" alt="Racking system for solar panels" width="400">
-            </li>
-            <li>Multiple modules form rows, often miles long<br>
-                <img src="solar-plant.jpeg" alt="Long rows of solar panels" width="400">
-            </li>
-            <li>Trackers adjust panel angle to follow the sun<br>
-                <img src="tracker.jpeg" alt="Solar tracker adjusting panel angle" width="400">
-            </li>
-            <li>
-                Wire harnesses send DC power to the inverter skid<br>
-                <img src="DC_Collector.jpeg" alt="DC collector wiring" width="400">
-            </li>
-            <li>Inverters convert DC to AC electricity<br>
-                <img src="inverter.jpeg" alt="Inverter converting DC to AC" width="400">
-            </li>
+  <!-- Home / landing -->
+  <div class="tab-content active" id="home">
+    <section aria-labelledby="welcome">
+      <h2 id="welcome">Welcome to SOLV Energy</h2>
+      <p>Welcome to SOLV Energy’s training portal! Start here to learn who we are, what we stand for, and our mission.</p>
+    </section>
 
-            <li>AC travels to substations for voltage change</li>
-            <li>Electricity is delivered to communities</li>
-        </ul>
-        <h3>SCADA System</h3>
-        <ul>
-            <li>Monitors & controls DC to AC conversion in real time</li>
-            <li>Tracks alarms, production, and remote commands</li>
-        </ul>
-        <h3>Grid Connection</h3>
-        <ul>
-            <li>Power sent to utility grid and tracked for revenue</li>
-        </ul>
-    </div>
+    <section aria-labelledby="who-we-are">
+      <h3 id="who-we-are">Who We Are</h3>
+      <p>We’re a North American leader in utility-scale solar, energy storage, and high-voltage projects—focused on performance, safety, and long-term partnerships.</p>
+    </section>
 
-  
-    <div class="tab-content" id="tools" style="display:none;">
-        <h2>Useful Tools</h2>
-        <ul>
-            <li><strong>RAE</strong>: Performance monitoring & company AI</li>
-            <li><strong>The Grid</strong>: Document/knowledge sharing (SharePoint)</li>
-            <li><strong>Workday</strong>: HR tasks (pay, timecards, trainings)</li>
-            <li><strong>Sunscreen</strong>: Maintenance ticketing system</li>
-        </ul>
-    </div>
+    <section aria-labelledby="expertise">
+      <h3 id="expertise">Our expertise</h3>
+      <blockquote>
+        For over 15 years, SOLV Energy has advanced the solar industry by delivering groundbreaking projects, advocating for renewable energy, and developing a team of nationwide experts. We are ready to support you at any stage or manage the entire investment. 
+      </blockquote>
+    </section>
 
-    <div class="tab-content" id="power" style="display:none;">
-        <h2>Power Systems 101</h2>
-        <ul>
-            <li><strong>Voltage (V)</strong>: Electrical “pressure” pushing current through a wire</li>
-            <li><strong>Current (I)</strong>: The flow of electricity (electrons) through a conductor</li>
-            <li><strong>Resistance (R)</strong>: Opposition to current flow in a circuit</li>
-            <li><strong>Power (P)</strong>: The rate of doing electrical work (P = V × I)</li>
-            <li><strong>Energy</strong>: Total electricity used over time</li>
-            <li><strong>Direct Current (DC)</strong>: One-directional electricity (from solar panels)</li>
-            <li><strong>Alternating Current (AC)</strong>: Grid electricity that reverses direction in cycles</li>
-            <li><strong>Inverter</strong>: Converts DC to AC</li>
-            <li><strong>Transformer</strong>: Changes voltage levels for transmission</li>
-        </ul>
-    </div> 
+    <section aria-labelledby="values">
+      <h3 id="values">Our Four Core Values</h3>
+      <ul class="values-grid">
+        <li>
+          <h4>Safety</h4>
+          <p>We create a safe environment for ourselves and others; safety drives every decision.</p>
+        </li>
+        <li>
+          <h4>Teamwork</h4>
+          <p>We thrive on collaboration, value diverse perspectives, and celebrate collective success.</p>
+        </li>
+        <li>
+          <h4>Quality</h4>
+          <p>We deliver accurate, reliable work and continuously improve.</p>
+        </li>
+        <li>
+          <h4>Innovation</h4>
+          <p>We think creatively, embrace change, and seek better ways to work.</p>
+        </li>
+      </ul>
+    </section>
+  </div>
 
-    <div class="tab-content" id="quiz" style="display: none;">
-    <h2>🔌 Power Systems 101: Quiz</h2>
-    <p>Each question has one correct answer. Answers are shown after submission.</p>
-    <form id="quizForm">
+  <!-- Solar -->
+  <div class="tab-content" id="solar">
+    <h2>How Solar Works at SOLV</h2>
+    <ul>
+      <li>
+        Sunlight hits PV modules, producing DC electricity<br>
+        <img src="sunlight-hits.jpeg" alt="Solar panel capturing sunlight" width="400">
+      </li>
+      <li>
+        Mounted on racking systems fixed to ground posts<br>
+        <img src="racking system.jpeg" alt="Racking system for solar panels" width="400">
+      </li>
+      <li>Multiple modules form rows, often miles long<br>
+        <img src="solar-plant.jpeg" alt="Long rows of solar panels" width="400">
+      </li>
+      <li>Trackers adjust panel angle to follow the sun<br>
+        <img src="tracker.jpeg" alt="Solar tracker adjusting panel angle" width="400">
+      </li>
+      <li>
+        Wire harnesses send DC power to the inverter skid<br>
+        <img src="DC_Collector.jpeg" alt="DC collector wiring" width="400">
+      </li>
+      <li>Inverters convert DC to AC electricity<br>
+        <img src="inverter.jpeg" alt="Inverter converting DC to AC" width="400">
+      </li>
+      <li>AC travels to substations for voltage change</li>
+      <li>Electricity is delivered to communities</li>
+    </ul>
+    <h3>SCADA System</h3>
+    <ul>
+      <li>Monitors & controls DC to AC conversion in real time</li>
+      <li>Tracks alarms, production, and remote commands</li>
+    </ul>
+    <h3>Grid Connection</h3>
+    <ul>
+      <li>Power sent to utility grid and tracked for revenue</li>
+    </ul>
+  </div>
 
+  <!-- Tools -->
+  <div class="tab-content" id="tools">
+    <h2>Useful Tools</h2>
+    <ul>
+      <li><strong>RAE</strong>: Performance monitoring & company AI</li>
+      <li><strong>The Grid</strong>: Document/knowledge sharing (SharePoint)</li>
+      <li><strong>Workday</strong>: HR tasks (pay, timecards, trainings)</li>
+      <li><strong>Sunscreen</strong>: Maintenance ticketing system</li>
+    </ul>
+  </div>
+
+  <!-- Power 101 -->
+  <div class="tab-content" id="power">
+    <h2>Power Systems 101</h2>
+    <ul>
+      <li><strong>Voltage (V)</strong>: Electrical “pressure” pushing current through a wire</li>
+      <li><strong>Current (I)</strong>: The flow of electricity (electrons) through a conductor</li>
+      <li><strong>Resistance (R)</strong>: Opposition to current flow in a circuit</li>
+      <li><strong>Power (P)</strong>: The rate of doing electrical work (P = V × I)</li>
+      <li><strong>Energy</strong>: Total electricity used over time</li>
+      <li><strong>Direct Current (DC)</strong>: One-directional electricity (from solar panels)</li>
+      <li><strong>Alternating Current (AC)</strong>: Grid electricity that reverses direction in cycles</li>
+      <li><strong>Inverter</strong>: Converts DC to AC</li>
+      <li><strong>Transformer</strong>: Changes voltage levels for transmission</li>
+    </ul>
+  </div>
+
+  <!-- Quiz -->
+<div class="tab-content" id="quiz">
+  <h2>🔌 Power Systems 101: Quiz</h2>
+
+  <div class="quiz-buttons" role="group" aria-label="Open related quizzes">
+  </div>
+
+  <p>Each question has one correct answer. Answers are shown after submission.</p>
+
+  <form id="quizForm">
       <div id="q1_container">
         <p>1. What is voltage (V)? <span id="q1_feedback" class="feedback"></span></p>
         <input type="radio" name="q1" value="A"> A. The rate of doing electrical work<br>
@@ -165,6 +243,9 @@
     </form>
   </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
+
+

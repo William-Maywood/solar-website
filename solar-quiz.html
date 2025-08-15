@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Solar → Substation — Quiz</title>
+  <link rel="stylesheet" href="style.css"> <!-- Use your main CSS -->
+</head>
+<body>
+  <header>
+    <h1>Solar → Substation — Quiz</h1>
+    <p><a class="back" href="./" rel="noopener">← Back to portal</a></p>
+  </header>
+
+  <main>
+    <div class="card">
+      <p class="muted">
+        Flow: PV modules → DC strings → combiner boxes → inverter (DC→AC) → AC feeders → substation transformer → transmission.
+      </p>
+
+      <form data-quiz="solar" class="grid">
+        <!-- All the fieldsets you pasted go here exactly as in your snippet -->
+        <!-- Q1 -->
+        <fieldset class="question" data-type="single" data-answer="b">
+          <legend>
+            <span class="q-head">
+              <span class="badge">1</span>
+              Which device converts DC from the PV array into AC used by the grid?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q1" value="a"> Main Power Transformer</label>
+            <label class="choice"><input type="radio" name="q1" value="b"> Inverter (on the skid)</label>
+            <label class="choice"><input type="radio" name="q1" value="c"> Combiner Box</label>
+            <label class="choice"><input type="radio" name="q1" value="d"> SCADA Rack</label>
+          </div>
+        </fieldset>
+
+        <!-- Q2 -->
+        <fieldset class="question" data-type="single" data-answer="d">
+          <legend>
+            <span class="q-head">
+              <span class="badge">2</span>
+              What is the role of the Main Power Transformer in the substation?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q2" value="a"> Convert AC to DC for battery charging</label>
+            <label class="choice"><input type="radio" name="q2" value="b"> Combine DC strings from multiple PV modules</label>
+            <label class="choice"><input type="radio" name="q2" value="c"> Track the sun to increase irradiance</label>
+            <label class="choice"><input type="radio" name="q2" value="d"> Step up AC voltage to match transmission requirements</label>
+          </div>
+        </fieldset>
+
+        <!-- Q3 (multi) -->
+        <fieldset class="question" data-type="multi" data-answer="a,c">
+          <legend>
+            <span class="q-head">
+              <span class="badge">3</span>
+              Select all items typically found upstream of the inverter (DC side).
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="checkbox" name="q3" value="a"> PV modules & DC strings</label>
+            <label class="choice"><input type="checkbox" name="q3" value="b"> Feeder cables to the substation</label>
+            <label class="choice"><input type="checkbox" name="q3" value="c"> Combiner boxes</label>
+            <label class="choice"><input type="checkbox" name="q3" value="d"> Main power transformer</label>
+          </div>
+          <p class="muted" style="font-size:12px">Tip: Upstream of the inverter = before DC→AC conversion.</p>
+        </fieldset>
+
+        <!-- Q4 -->
+        <fieldset class="question" data-type="single" data-answer="c">
+          <legend>
+            <span class="q-head">
+              <span class="badge">4</span>
+              What does the MET (weather) station primarily provide?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q4" value="a"> Backup AC power to the site</label>
+            <label class="choice"><input type="radio" name="q4" value="b"> Control signals for trackers</label>
+            <label class="choice"><input type="radio" name="q4" value="c"> Measurements like irradiance, wind, and temperature</label>
+            <label class="choice"><input type="radio" name="q4" value="d"> Step-up of voltage to transmission levels</label>
+          </div>
+        </fieldset>
+
+        <!-- Q5 -->
+        <fieldset class="question" data-type="single" data-answer="b">
+          <legend>
+            <span class="q-head">
+              <span class="badge">5</span>
+              Where is the SCADA rack commonly located?
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q5" value="a"> Inside the MET tower</label>
+            <label class="choice"><input type="radio" name="q5" value="b"> In the control room at the substation or at the inverter skid</label>
+            <label class="choice"><input type="radio" name="q5" value="c"> Mounted on each PV module</label>
+            <label class="choice"><input type="radio" name="q5" value="d"> Inside the main power transformer</label>
+          </div>
+        </fieldset>
+
+        <!-- Q6 (true/false) -->
+        <fieldset class="question" data-type="tf" data-answer="true">
+          <legend>
+            <span class="q-head">
+              <span class="badge">6</span>
+              True or False: Trackers tilt PV panels to follow the sun to maximize production.
+              <span class="feedback" aria-live="polite"></span>
+            </span>
+          </legend>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="q6" value="true"> True</label>
+            <label class="choice"><input type="radio" name="q6" value="false"> False</label>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="controls">
+        <button class="primary" data-action="grade" data-target="solar">Grade</button>
+        <button data-action="reset" data-target="solar">Reset</button>
+        <button data-action="reveal" data-target="solar">Show answers</button>
+        <div class="score" id="score-solar" aria-live="polite">Score: —</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="quiz.js" defer></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-
+/* ===== Base layout ===== */
 body {
     font-family: Arial, sans-serif;
     max-width: 900px;
@@ -8,7 +8,6 @@ body {
     color: #222;
     line-height: 1.6;
 }
-
 
 h1 {
     font-size: 32px;
@@ -29,45 +28,57 @@ h3 {
     margin-top: 30px;
 }
 
-
+/* ===== Tabs (legacy layout — fine to keep) ===== */
 .tabs {
     margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .tab {
     padding: 10px 16px;
-    margin-right: 8px;
+    margin-right: 0;
     background-color: #eee;
-    border: none;
-    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tab:hover {
     background-color: #ddd;
 }
 
+/* active tab visual */
+.tab.active {
+    background-color: #fff;
+    border-color: #93c5fd;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
 
+/* keyboard focus */
+.tab:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 2px;
+}
+
+/* ===== Tab content panels ===== */
 .tab-content {
     display: none;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
 }
 
-.tab-content.active {
-    display: block;
-}
+.tab-content.active { display: block; }
 
-
-ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-li {
-    margin-bottom: 20px;
-}
-
+/* ===== Lists & images ===== */
+ul { list-style-type: disc; padding-left: 20px; }
+li { margin-bottom: 20px; }
 
 li img {
     display: block;
@@ -78,6 +89,7 @@ li img {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== Buttons ===== */
 button[type="button"] {
     margin-top: 10px;
     padding: 8px 14px;
@@ -89,17 +101,55 @@ button[type="button"] {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+button[type="button"]:hover { background-color: #45a049; }
 
-button[type="button"]:hover {
-    background-color: #45a049;
+/* ===== Quiz feedback ===== */
+#quizResult { font-weight: bold; margin-top: 15px; }
+.feedback { margin-left: 6px; font-weight: 600; }
+
+/* ===== Landing page: Values grid & Mission quote (updated for 1-line layout) ===== */
+.values-grid {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;         /* put all items in a row */
+  flex-wrap: nowrap;     /* prevent wrapping on wide screens */
+  gap: 12px;
 }
 
-#quizResult {
-    font-weight: bold;
-    margin-top: 15px;
+.values-grid li {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  background: #fff;
+  flex: 1 1 0;           /* equal widths */
+  min-width: 0;          /* avoid overflow issues */
 }
 
+.values-grid h4 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
 
+/* Responsive: wrap on smaller screens */
+@media (max-width: 900px) {
+  .values-grid { flex-wrap: wrap; }
+  .values-grid li { flex: 1 1 calc(50% - 12px); }
+}
+
+@media (max-width: 520px) {
+  .values-grid li { flex: 1 1 100%; }
+}
+
+/* Mission statement quote */
+blockquote {
+  margin: 6px 0 0;
+  padding-left: 12px;
+  border-left: 4px solid #e5e7eb;
+  font-style: italic;
+  color: #374151;
+}
+/* ===== Full-screen overlay (kept as-is) ===== */
 #failOverlay {
   position: fixed;
   top: 0;
@@ -116,3 +166,244 @@ button[type="button"]:hover {
   line-height: 1.4;
   text-align: center;
 }
+
+/* ===== Small-screen tweaks ===== */
+@media (max-width: 640px) {
+  body { padding: 16px; }
+  .tab { padding: 8px 12px; }
+  h1 { font-size: 28px; }
+  h2 { font-size: 22px; }
+  h3 { font-size: 18px; }
+}
+
+/* ===== SOLV Energy brand theme (override) ===== */
+:root{
+  /* Swap with exact handbook hex if you have them */
+  --solv-green: #1CA350;   /* primary green */
+  --solv-blue:  #0B76B7;   /* primary blue */
+
+  --solv-green-700: #158a44;
+  --solv-green-100: #E8F6EE;
+  --solv-blue-700:  #085b8e;
+  --solv-blue-100:  #E9F5FC;
+}
+
+h1 { color: var(--solv-blue); }
+#home #welcome {
+  color: var(--solv-green);
+  border-bottom: 2px solid var(--solv-blue-100);
+}
+
+/* Tabs brand accents */
+.tabs { gap: 8px; }
+.tab { background-color: #eee; border: 1px solid #e5e7eb; border-radius: 6px; }
+.tab:hover { background-color: var(--solv-blue-100); }
+.tab.active{ background-color: #fff; border-color: var(--solv-blue); box-shadow: 0 1px 2px rgba(0,0,0,.06); color: var(--solv-blue-700); }
+.tab:focus-visible{ outline: 3px solid var(--solv-blue); outline-offset: 2px; }
+
+/* Panels */
+.tab-content{ border: 1px solid var(--solv-blue-100); }
+
+/* Buttons (quiz Submit, etc.) */
+button[type="button"]{ background-color: var(--solv-green); }
+button[type="button"]:hover{ background-color: var(--solv-green-700); }
+
+/* Values grid cards */
+.values-grid li{ border-top: 3px solid var(--solv-green); }
+
+/* Mission quote accent */
+blockquote{ border-left: 4px solid var(--solv-blue); }
+
+/* Image frame tweak */
+#solar img{ box-shadow: 0 2px 12px rgba(11,118,183,0.12); }
+/* ===== Centered marquee ("lazy river") tabs — RIGHTWARD + faster ===== */
+:root{
+  --tabs-speed: 16s;   /* smaller = faster (try 12s if you want quicker) */
+  --tabs-gap: 8px;
+}
+
+.tabs-viewport{
+  display: flex;
+  justify-content: flex-start;   /* keep lane flush with the left edge */
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.tabs-track{
+  display: inline-flex;
+  gap: var(--tabs-gap);
+  flex-wrap: nowrap;
+  will-change: transform;
+  animation: marquee-left var(--tabs-speed) linear infinite;
+  padding: 2px; /* room for focus rings */
+}
+
+/* Pause motion on hover for easy clicking */
+.tabs-viewport:hover .tabs-track{ animation-play-state: paused; }
+
+/* Continuous LEFTWARD loop (0% -> -50%) */
+@keyframes marquee-left{
+  0%   { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tabs-track{ animation: none; transform: translate3d(0,0,0); }
+}
+
+
+/* ===== Visual polish: depth, motion, & brand accents ===== */
+
+/* Subtle page background tint */
+body{
+  background:
+    radial-gradient(1200px 600px at 85% -10%, rgba(11,118,183,0.06), transparent 60%),
+    radial-gradient(800px 500px at -10% 20%, rgba(28,163,80,0.05), transparent 60%),
+    #f9f9f9;
+}
+
+/* Gradient headline text + tighter spacing */
+h1{
+  background: linear-gradient(90deg, var(--solv-blue), var(--solv-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2px;
+  margin-bottom: 10px;
+}
+
+/* Section headers with left accent rule */
+h2, h3{
+  position: relative;
+  padding-left: 14px;
+}
+h2::before, h3::before{
+  content: "";
+  position: absolute; left: 0; top: 0.2em;
+  width: 6px; height: 1.1em;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--solv-blue), var(--solv-green));
+  opacity: .7;
+}
+
+/* Panels: more radius + depth + entrance animation */
+.tab-content{
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(11,118,183,0.08), 0 2px 6px rgba(0,0,0,.04);
+  animation: pop-in .35s ease both;
+}
+@keyframes pop-in{
+  from{ opacity:0; transform: translateY(6px) scale(.996); }
+  to  { opacity:1; transform: translateY(0)   scale(1); }
+}
+@media (prefers-reduced-motion: reduce){
+  .tab-content{ animation: none; }
+}
+
+/* Tabs: cleaner active state + underline indicator */
+.tab{
+  transition: background-color .25s ease, box-shadow .25s ease, transform .12s ease;
+}
+.tab:hover{ transform: translateY(-1px); }
+.tab.active{
+  position: relative;
+  color: var(--solv-blue-700);
+  box-shadow: 0 6px 14px rgba(11,118,183,.12), 0 1px 2px rgba(0,0,0,.06);
+}
+.tab.active::after{
+  content:"";
+  position:absolute; left:10%; right:10%; bottom:-6px; height:3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--solv-blue), var(--solv-green));
+}
+
+/* Values cards: soft gradient, lift on hover, thicker brand top border */
+.values-grid li{
+  border-top: 4px solid var(--solv-green);
+  background:
+    linear-gradient(180deg, #ffffff, #ffffff) padding-box,
+    linear-gradient(180deg, rgba(28,163,80,.08), rgba(11,118,183,.08)) border-box;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.values-grid li:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  border-top-color: var(--solv-blue);
+}
+
+/* Mission quote: card-like, bigger type, decorative quote mark */
+blockquote{
+  background: var(--solv-blue-100);
+  border-left: 6px solid var(--solv-blue);
+  padding: 14px 16px 14px 42px;
+  border-radius: 10px;
+  font-size: 1.02rem;
+  position: relative;
+}
+blockquote::before{
+  content: "“";
+  position: absolute; left: 12px; top: 8px;
+  font-size: 32px; line-height: 1; color: var(--solv-blue);
+  opacity: .35;
+}
+
+/* Buttons: lift + focus ring */
+button[type="button"]{
+  box-shadow: 0 6px 16px rgba(28,163,80,.24);
+  transition: transform .12s ease, box-shadow .2s ease, filter .2s ease;
+}
+button[type="button"]:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(28,163,80,.28);
+  filter: saturate(1.05);
+}
+button[type="button"]:focus-visible{
+  outline: 3px solid color-mix(in srgb, var(--solv-green) 60%, white);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(28,163,80,.20);
+}
+
+/* Images: subtle border + consistent radius */
+li img{
+  border: 1px solid rgba(11,118,183,.15);
+  border-radius: 12px;
+}
+
+/* Small tweak to the first welcome header inside #home */
+#home #welcome{
+  color: var(--solv-green);
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+}
+
+
+
+/* Center bullets + images on the Solar page only */
+#solar ul{
+  list-style-position: inside;   /* keeps the bullet with the centered text */
+  padding-left: 0;
+  margin: 0 auto;                /* centers the whole list block */
+  max-width: 720px;              /* optional: narrows for nicer line length */
+  text-align: center;            /* centers the bullet text */
+}
+
+#solar li{
+  margin-bottom: 28px;           /* a bit more spacing between items */
+}
+
+#solar li img{
+  display: block;
+  margin: 12px auto 0;           /* centers the image under each bullet */
+  border-radius: 12px;
+}
+
+.quiz-buttons { 
+  display:flex; flex-wrap:wrap; gap:12px; margin:8px 0 14px; justify-content:center; 
+}
+.btn-open-quiz{
+  display:inline-block; padding:10px 14px; border:1px solid #e5e7eb; border-radius:10px;
+  background:#f8fafc; color:#111; text-decoration:none; font-weight:600;
+}
+.btn-open-quiz:hover{ background:#eef2f7; }
+
+.feedback{ font-weight:700; padding-left:6px; }
